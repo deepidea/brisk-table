@@ -1,6 +1,6 @@
 # Brisk table demo presentation
 
-see web presentation of Brisk Table  https://kupolua.github.io/web-presentation/
+see web presentation of Brisk Table  https://deepidea.github.io/brisk-table/
 
 Enjoy
 
