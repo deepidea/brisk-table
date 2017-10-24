@@ -1,0 +1,21 @@
+<p>If you have too long colums, Brisk Table can concatenate it for you</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;div class="json-table tableConfig"
+     data-json-path="$..teachers"
+     data-custom-fields='[
+         {"fieldName":"firstName","columnName":"First Name","columnWidth":10},
+         {"fieldName":"lastName","columnName":"Last Name","columnWidth":60},
+         {"fieldName":"age","columnName":"Age","columnWidth":10},
+         {"fieldName":"cellPhone","columnName":"Cell Phone","columnWidth":330}
+     ]'
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>     data-column-text-length="30"
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>     data-provider-function="dataProviderFunction"
+&gt;&lt;/div&gt;
+</code></pre>
+</div>
+
+<p>Note: filter will be applied only to concatenated part in UI</p>
