@@ -1,0 +1,33 @@
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;body&gt;
+    &lt;script type="text/javascript"&gt;
+        function dataProviderFunction() {
+            var data = [{
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "age": 30,
+                    "cellPhone": "+000123456789"
+                },
+                {
+                    "firstName": "Medie",
+                    "lastName": "Lorn",
+                    "age": 50,
+                    "cellPhone": "+000987654321"
+                },
+                {
+                    "firstName": "Olsom",
+                    "lastName": "Clarke",
+                    "age": 42,
+                    "cellPhone": "+005678901234"
+                }];
+                
+            return data;
+        }
+    &lt;/script&gt;
+    &lt;div class="json-table" 
+        data-provider-function="dataProviderFunction"
+        data-json-path="$"
+    &gt;&lt;/div&gt;
+    &lt;script src="https://rawgit.com/kupolua/json-to-table/presentation/html/json-table.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+</code></pre>
+</div>

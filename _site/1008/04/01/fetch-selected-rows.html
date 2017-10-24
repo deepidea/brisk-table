@@ -1,0 +1,13 @@
+<p>To fetch selected rows use next function</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;script type="text/javascript"&gt;
+    function fetchSelectedRows(id){
+        let selectedRows = jsonTableFunctions.fetchSelectedRows(id);
+
+        alert('\'fetch selected rows\' hook result:' + JSON.stringify(selectedRows, null, 4));
+    }
+&lt;/script&gt;
+</code></pre>
+</div>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;button onclick="fetchSelectedRows('1')"&gt;Click to fetch selected rows&lt;/button&gt;
+</code></pre>
+</div>
