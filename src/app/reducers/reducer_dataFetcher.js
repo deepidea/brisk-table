@@ -83,6 +83,18 @@ function showPageRows(data, pageRowsOption) {
     return tableRows;
 }
 
+function isVisibleField(fieldsList, field) {
+    let isVisibleField = false;
+
+    fieldsList.map((customField) => {
+        if(customField.key == field) {
+            isVisibleField = true;
+        }
+    });
+
+    return isVisibleField;
+}
+
 function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, customFields) {
     let dataSource = [];
     let tableTitle;
@@ -99,10 +111,12 @@ function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, custo
         let hash = md5(new Date() + Math.random() + i);
 
         for (var key in dataSourceRow) {
-            if(typeof dataSourceRow[key] === 'string' && dataSourceRow[key].length > columnTextLength) {
-                dataRow[key] = dataSourceRow[key].substr(0, columnTextLength) + '...';
-            } else {
-                dataRow[key] = dataSourceRow[key];
+            if(isVisibleField(headerTable, key)) {
+                if(typeof dataSourceRow[key] === 'string' && dataSourceRow[key].length > columnTextLength) {
+                    dataRow[key] = dataSourceRow[key].substr(0, columnTextLength) + '...';
+                } else {
+                    dataRow[key] = dataSourceRow[key];
+                }
             }
         }
 
