@@ -91,6 +91,8 @@ function filterData(state, filterValue) {
     } else {
         filteredData = _.filter(state.sourceList.sortedData || state.sourceList.dataSource, function(data) {
             for (var key in data) {
+                if(!data[key]) {return;}
+                
                 if(data[key].toString().match(regexp) && key != 'hash') {
                     return true;
                 }
