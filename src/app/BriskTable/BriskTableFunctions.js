@@ -12,7 +12,7 @@ class BriskTableFunctions {
      refresh(_this) {
          this.properties.filterData('');
          this.properties.setInitState({});
-         this.properties.getSourceList(this.properties.dataUrl, this.properties.dataProviderFunction);
+         this.properties.dataFetchAction(this.properties.dataUrl, this.properties.dataProviderFunction);
          this.properties.initDataHandlerState();
 
          return this;
