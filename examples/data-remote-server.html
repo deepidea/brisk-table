@@ -1,0 +1,33 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brisk Table</title>
+    <meta name="description" content="Brisk Table">
+
+    <!-- Use minimum-scale=1 to enable GPU rasterization -->
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1"
+    >
+
+    <style type="text/css">
+        .tableConfig {
+            --header-toolbar-height: 35;
+            --header-column-height: 30;
+            --row-height: 26;
+            --rows-per-page: 5;
+            --rows-size-list: 5, 10;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="brisk-table tableConfig"
+         data-url="https://raw.githubusercontent.com/deepidea/brisk-table/master/json-server-db/db.json"
+         data-json-path="$..students"
+    ></div>
+    <script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
+</body>
+</html>
