@@ -1,0 +1,362 @@
+<!doctype html>
+<html class="no-js" lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Brisk Table</title>
+    <meta name="description" content="Brisk Table">
+
+    <!-- Use minimum-scale=1 to enable GPU rasterization -->
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1, minimum-scale=1"
+    >
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <style type="text/css">
+        .tableConfig {
+            padding: 10px 20px 10px 20px;
+            --header-toolbar-height: 35;
+            --header-column-height: 30;
+            --row-height: 26;
+            --rows-per-page: 5;
+            --rows-size-list: 5, 10, 20;
+        }
+        .formConfig {
+            padding: 10px 200px 10px 200px;
+        }
+        .buttonfetchSelectedRows {
+            margin: 40px 20px 10px 40px;
+        }
+        #buttonAddInfo {
+            margin: 40px 20px 10px 35px;
+        }
+        #buttonAdd {
+            margin: 10px 10px 10px 15px;
+            display: none;
+        }
+        #buttonUpdate {
+            margin: 10px 10px 10px 15px;
+            display: none;
+        }
+        #buttonDelete {
+            margin: 10px 10px 10px 15px;
+            display: none;
+        }
+        #form-template {
+            display: none;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<script type="text/javascript">
+    var jsonData = {
+        "teachers": [
+            {
+                "id": 1,
+                "firstName": "Olsom",
+                "lastName": "Clarke",
+                "age": 42,
+                "cellPhone": "+005678901234",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 2,
+                "firstName": "John",
+                "lastName": "Smith",
+                "age": 30,
+                "cellPhone": "+000123456789",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 3,
+                "firstName": "Medie",
+                "lastName": "Lorn",
+                "age": 50,
+                "cellPhone": "+000987654321",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 4,
+                "firstName": "Olsom",
+                "lastName": "Clarke",
+                "age": 42,
+                "cellPhone": "+005678901234",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 5,
+                "firstName": "John",
+                "lastName": "Smith",
+                "age": 30,
+                "cellPhone": "+000123456789",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 6,
+                "firstName": "Medie",
+                "lastName": "Lorn",
+                "age": 50,
+                "cellPhone": "+000987654321",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 7,
+                "firstName": "Olsom",
+                "lastName": "Clarke",
+                "age": 42,
+                "cellPhone": "+005678901234",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 8,
+                "firstName": "John",
+                "lastName": "Smith",
+                "age": 30,
+                "cellPhone": "+000123456789",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 9,
+                "firstName": "Medie",
+                "lastName": "Lorn",
+                "age": 50,
+                "cellPhone": "+000987654321",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 10,
+                "firstName": "Olsom",
+                "lastName": "Clarke",
+                "age": 42,
+                "cellPhone": "+005678901234",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 11,
+                "firstName": "John",
+                "lastName": "Smith",
+                "age": 30,
+                "cellPhone": "+000123456789",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            },
+            {
+                "id": 12,
+                "firstName": "Medie",
+                "lastName": "Lorn",
+                "age": 50,
+                "cellPhone": "+000987654321",
+                "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
+                "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
+            }
+        ]
+    };
+    function dataProviderFunction() {
+        return jsonData;
+    }
+</script>
+
+
+<script>
+    function getFormData() {
+        let row = {};
+        $(".brisk-form").find("input, textarea").each(function () {
+            let field = {};
+            field[$(this).attr('id')] = $(this)[0].value;
+            row = Object.assign(row, field)
+        });
+        return row;
+    }
+    function onButtonAdd() {
+        let row = getFormData();
+        jsonData['teachers'][jsonData['teachers'].length] = row;
+        briskTableFunctions.refresh('1');
+        $('#buttonAdd').remove();
+        $('#buttonDelete').remove();
+        $('#buttonUpdate').clone().appendTo("#form-container");
+        $('#buttonDelete').clone().appendTo("#form-container");
+        $('#buttonUpdate').hide();
+        $('#buttonDelete').show();
+    }
+    function onButtonUpdate() {
+        let row = getFormData();
+        jsonData['teachers'].map(function (dataRow, i, data) {
+            if(dataRow.id == Math.ceil(row.id)) {
+                data[i] = row;
+            }
+        });
+        briskTableFunctions.refresh('1');
+        $('#buttonUpdate').hide();
+    }
+</script>
+
+<script type="text/javascript">
+    function addRow(){
+        $("#form-container").html('');
+        $( "#form-template" ).find(".form-row, #buttonAdd, #buttonDelete").each(function () {
+            $(this).clone().appendTo("#form-container");
+        });
+        $(".brisk-form").find("input#id").val(Math.max.apply(Math, jsonData['teachers'].map(function(o){return o.id;})) + 1);
+        $('#buttonAdd').hide();
+        $('#buttonDelete').hide();
+    }
+</script>
+
+<script type="text/javascript">
+    function onButtonDelete(){
+        let deletedID = $(".brisk-form").find("input#id")[0].value;
+        jsonData['teachers'].forEach(function (row, i, list) {
+            if(row.id == deletedID) {
+                list.splice(i, 1);
+            }
+        });
+        $("#form-container").html('');
+        briskTableFunctions.refresh('1');
+        $('#buttonUpdate').hide();
+        $('#buttonDelete').hide();
+    }
+</script>
+
+
+<script type="text/javascript">
+    function hookFunction(rowData){
+        $("#form-container").html('');
+        $( "#form-template" ).find(".form-row, #buttonUpdate, #buttonDelete").each(function () {
+            $(this).clone().appendTo("#form-container");
+        });
+        $('#buttonUpdate').hide();
+        $( "#hash" ).val(rowData.hash);
+        $( "#id" ).val(rowData.id);
+        $( "#firstName" ).val(rowData.firstName);
+        $( "#lastName" ).val(rowData.lastName);
+        $( "#age" ).val(rowData.age);
+        $( "#cellPhone" ).val(rowData.cellPhone);
+        $( "#notes" ).val(rowData.notes);
+        $( "#terms" ).val(rowData.terms);
+        $('#buttonDelete').show();
+    }
+</script>
+
+<!--<button type="submit" class="btn btn-outline-primary btn-sm buttonfetchSelectedRows" onclick="fetchSelectedRows('1')">Click to fetch selected rows</button>-->
+<div class="brisk-table tableConfig"
+     id="1"
+     data-provider-function="dataProviderFunction"
+     data-json-path="$..teachers"
+     data-custom-fields='[
+            {"fieldName":"id","columnName":"ID","columnWidth":5},
+            {"fieldName":"firstName","columnName":"First Name","columnWidth":15},
+            {"fieldName":"lastName","columnName":"Last Name","columnWidth":20},
+            {"fieldName":"age","columnName":"Age","columnWidth":10},
+            {"fieldName":"cellPhone","columnName":"Cell Phone","columnWidth":300}
+         ]'
+     data-hook-on-row-selected="hookFunction"
+     data-column-text-length="50"
+     data-show-checkboxes="false"
+></div>
+
+<button id="buttonAddInfo" type="submit" class="btn btn-primary" onclick="addRow()">Add Info</button>
+<div id="form-container" class="form-row brisk-form formConfig"></div>
+
+<div id="form-template">
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="id">ID</label>
+            <input type="text" class="form-control" id="id" placeholder="ID" readonly>
+            <input type="hidden" class="form-control" id="hash">
+        </div>
+        <div class="form-group col-md-5">
+            <label for="firstName">First Name</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="firstName"
+                    placeholder="First Name"
+                    oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
+            >
+        </div>
+        <div class="form-group col-md-5">
+            <label for="lastName">Last Name</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="lastName"
+                    placeholder="Last Name"
+                    oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
+            >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="age">Age</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="age"
+                    placeholder="yy"
+                    oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
+            >
+        </div>
+        <div class="form-group col-md-6">
+            <label for="cellPhone">Cell Phone</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="cellPhone"
+                    placeholder="+xx (xxx) xxx-xxxx"
+                    oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
+            >
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label for="notes">Notes</label>
+                <textarea
+                        class="form-control"
+                        id="notes"
+                        rows="4"
+                        placeholder="Notes"
+                        oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
+                ></textarea>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="terms">Terms</label>
+                <textarea
+                        class="form-control"
+                        id="terms"
+                        rows="4"
+                        placeholder="Terms"
+                        oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
+                ></textarea>
+        </div>
+    </div>
+    <button id="buttonUpdate" type="submit" class="btn btn-primary" onclick="onButtonUpdate()">Update</button>
+    <button id="buttonAdd" type="submit" class="btn btn-primary" onclick="onButtonAdd()">Add</button>
+    <button id="buttonDelete" type="submit" class="btn btn-danger" onclick="onButtonDelete()">Delete</button>
+</div>
+
+<script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
+</body>
+</html>
