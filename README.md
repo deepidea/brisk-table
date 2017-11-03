@@ -26,7 +26,6 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
 </body>
 </html>
 ```
-
 [`Demo`](https://deepidea.github.io/brisk-table/examples/get-data-from-remote-server.html)
 
 **Example 2** we are using next features:
@@ -98,5 +97,58 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
 </body>
 </html>
 ```
-
 [`Demo`](https://deepidea.github.io/brisk-table/examples/provider-custom_fields-chckboxes-fetch_selected.html)
+
+**Example 3** local data fetch provider:
+
+```html
+<!doctype html>
+<html>
+<head>
+    <title>Brisk Table</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+    function dataProviderFunction() {
+        var data = [
+                {
+                    "firstName": "John",
+                    "lastName": "Smith",
+                    "age": 30,
+                    "cellPhone": "+000123456789",
+                    "notes": "JavaScript is programming language."
+                },
+                {
+                    "firstName": "Medie",
+                    "lastName": "Lorn",
+                    "age": 50,
+                    "cellPhone": "+000987654321",
+                    "notes": "JavaScript is programming language."
+                },
+                {
+                    "firstName": "Olsom",
+                    "lastName": "Clarke",
+                    "age": 42,
+                    "cellPhone": "+005678901234",
+                    "notes": "JavaScript is programming language."
+                }
+            ];
+
+        return data;
+    }
+
+</script>
+
+    <h3>Local data fetch provider</h3>
+
+    <div class="brisk-table"
+         data-provider-function="dataProviderFunction"
+         data-json-path="$"
+    ></div>
+
+    <script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
+</body>
+</html>
+```
+[`Demo`](https://deepidea.github.io/brisk-table/examples/local_provider-jsonpath_root-custom_fields.html)
