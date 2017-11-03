@@ -26,5 +26,6 @@ Example 1 is a little, simple and brisk!
 </body>
 </html>
 ```
-<a href="https://deepidea.github.io/brisk-table/examples/get-data-from-remote-server.html" target="_blank">Demo</a>
+
+[`Demo`](https://deepidea.github.io/brisk-table/examples/get-data-from-remote-server.html)
 
