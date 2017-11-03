@@ -6,7 +6,7 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
 
 # Brisk Table examples
 
-Example 1 is a little, simple and brisk!
+**Example 1** is a little, simple and brisk!
 
 ```html
 <!doctype html>
@@ -29,3 +29,74 @@ Example 1 is a little, simple and brisk!
 
 [`Demo`](https://deepidea.github.io/brisk-table/examples/get-data-from-remote-server.html)
 
+**Example 2** we are using next features:
+* css for configure table
+* ajax in ajaxDataProviderFunction for get data from remote server
+* custom json path to return array in json object
+* checkboxes to select multiple rows
+* show selected rows
+* show custom fields
+* trim long text
+
+```html
+<!doctype html>
+<html>
+<head>
+    <title>Brisk Table</title>
+    <style type="text/css">
+        .tableConfig {
+            --header-toolbar-height: 35;
+            --header-column-height: 30;
+            --row-height: 26;
+            --rows-per-page: 5;
+            --rows-size-list: 5, 10;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <script type="text/javascript">
+        function ajaxDataProviderFunction(){
+            return $.ajax({
+                dataType: 'json',
+                url: 'https://raw.githubusercontent.com/deepidea/brisk-table/master/json-server-db/db.json',
+                success: function(jsonData){
+                    return jsonData;
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+        function fetchSelectedRows(id){
+            let selectedRows = briskTableFunctions.fetchSelectedRows(id);
+
+            alert('\'on button "Click to fetch selected rows" click\' hook result:' + JSON.stringify(selectedRows, null, 4));
+        }
+    </script>
+
+    <h3>This is extended example!</h3>
+    
+    <button onclick="fetchSelectedRows('1')">Click to fetch selected rows</button>
+    <div class="brisk-table tableConfig"
+         id="1"
+         data-provider-function="ajaxDataProviderFunction"
+         data-json-path="$..teachers"
+         data-custom-fields='[
+            {"fieldName":"firstName","columnName":"First Name","columnWidth":15},
+            {"fieldName":"lastName","columnName":"Last Name","columnWidth":20},
+            {"fieldName":"age","columnName":"Age","columnWidth":10},
+            {"fieldName":"cellPhone","columnName":"Cell Phone","columnWidth":60},
+            {"fieldName":"notes","columnName":"Notes","columnWidth":200}
+         ]'
+         data-column-text-length="100"
+         data-show-checkboxes="true"
+    ></div>
+    <script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
+</body>
+</html>
+```
+
+[`Demo`](https://deepidea.github.io/brisk-table/examples/provider-custom_fields-chckboxes-fetch_selected.html)
