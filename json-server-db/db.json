@@ -866,5 +866,52 @@
       "notes": "JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions. While it is most well-known as the scripting language for Web pages, many non-browser environments also use it, such as node.js, Apache CouchDB and Adobe Acrobat. JavaScript is a prototype-based, multi-paradigm, dynamic language, supporting object-oriented, imperative, and declarative (e.g. functional programming) styles. Read more about JavaScript.",
       "terms": "Please read the terms of this entire document  (“Terms”) carefully because it explains your rights and responsibilities when you visit any of Mozilla’s websites (“Websites”), or related feeds, social media, newsletters, source code repositories, and emails (together with Websites, these are collectively referred to as “Communications”). By accessing or signing up to receive Communications, you agree to be bound by these Terms."
     }
+  ],
+  "simpledata": [
+    {
+      "id": 1,
+      "firstName": "Jukone",
+      "lastName": "Mildret",
+      "age": 18,
+      "cellPhone": "+008754223678",
+      "notes": "JavaScript is programming language.",
+      "terms": "Please read the terms."
+    },
+    {
+      "id": 2,
+      "firstName": "Andre",
+      "lastName": "Jokuw",
+      "age": 21,
+      "cellPhone": "+009945612345",
+      "notes": "JavaScript is programming language.",
+      "terms": "Please read the terms."
+    },
+    {
+      "id": 3,
+      "firstName": "Guta",
+      "lastName": "Amira",
+      "age": 20,
+      "cellPhone": "+005484327853",
+      "notes": "JavaScript is programming language.",
+      "terms": "Please read the terms."
+    },
+    {
+      "id": 4,
+      "firstName": "Jukone",
+      "lastName": "Mildret",
+      "age": 18,
+      "cellPhone": "+008754223678",
+      "notes": "JavaScript is programming language.",
+      "terms": "Please read the terms."
+    },
+    {
+      "id": 5,
+      "firstName": "Andre",
+      "lastName": "Jokuw",
+      "age": 21,
+      "cellPhone": "+009945612345",
+      "notes": "JavaScript is programming language.",
+      "terms": "Please read the terms."
+    }
   ]
 }
