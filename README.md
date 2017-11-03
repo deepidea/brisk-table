@@ -28,11 +28,13 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
 ```
 [`Demo`](https://deepidea.github.io/brisk-table/examples/get-data-from-remote-server.html)
 
+
 **Example 2** local data fetch provider:
 
-`https://github.com/deepidea/brisk-table/blob/master/docs/examples/local_provider-jsonpath_root-custom_fields.html`
+https://github.com/deepidea/brisk-table/blob/master/docs/examples/local_provider-jsonpath_root-custom_fields.html
 
 [`Demo`](https://deepidea.github.io/brisk-table/examples/local_provider-jsonpath_root-custom_fields.html)
+
 
 **Example 3** we are using next features:
 * css for configure table
@@ -43,15 +45,16 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
 * show custom fields
 * trim long text
 
-`https://github.com/deepidea/brisk-table/blob/master/docs/examples/provider-custom_fields-chckboxes-fetch_selected.html`
+https://github.com/deepidea/brisk-table/blob/master/docs/examples/provider-custom_fields-chckboxes-fetch_selected.html
 
 [`Demo`](https://deepidea.github.io/brisk-table/examples/provider-custom_fields-chckboxes-fetch_selected.html)
+
 
 **Example 4** Enjoy! Real application with:
 * add new teacher to table
 * update data of any teacher
 * delete record if your teacher gone
 
-`https://github.com/deepidea/brisk-table/blob/master/docs/examples/real-application.html`
+https://github.com/deepidea/brisk-table/blob/master/docs/examples/real-application.html
 
 [`Demo`](https://deepidea.github.io/brisk-table/examples/real-application.html)
