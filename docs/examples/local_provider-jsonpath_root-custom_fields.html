@@ -7,7 +7,8 @@
 <body>
     <script type="text/javascript">
     function dataProviderFunction() {
-        var data = [
+        var jsonData = {
+            "teachers": [
                 {
                     "firstName": "John",
                     "lastName": "Smith",
@@ -29,9 +30,10 @@
                     "cellPhone": "+005678901234",
                     "notes": "JavaScript is programming language."
                 }
-            ];
+            ]
+        };
 
-        return data;
+        return jsonData;
     }
 
 </script>
@@ -40,7 +42,7 @@
 
     <div class="brisk-table"
          data-provider-function="dataProviderFunction"
-         data-json-path="$"
+         data-json-path="$..teachers"
     ></div>
 
     <script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
