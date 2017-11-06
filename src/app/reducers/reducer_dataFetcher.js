@@ -7,6 +7,7 @@ import { SET_INIT_STATE } from '../constants/CONSTANTS';
 import { GET_SOURCE_LIST } from '../constants/CONSTANTS';
 import { PAGE_NUMBER } from '../constants/CONSTANTS';
 import { SET_ROWS_PER_PAGE } from '../constants/CONSTANTS';
+import { SET_ROW_SIZE_LIST } from '../constants/CONSTANTS';
 import { SET_DATA_COLUMN_TEXT_LENGTH } from '../constants/CONSTANTS';
 
 function parseToList(customFields) {
@@ -95,7 +96,7 @@ function isVisibleField(fieldsList, field) {
     return isVisibleField;
 }
 
-function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, customFields) {
+function convertToDataTable(data, dataPath, rowsPerPage, rowSizeList, columnTextLength, customFields) {
     let dataSource = [];
     let tableTitle;
     let dataTable = [];
@@ -134,6 +135,7 @@ function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, custo
         dataTable: showPageRows(dataTable, {pageNumber: PAGE_NUMBER, rowSize: rowsPerPage}),
         dataLength: dataSource[0].length,
         rowsPerPage: rowsPerPage,
+        rowSizeList: rowSizeList,
         pageNumber: PAGE_NUMBER,
         selectedRows: new Array(),
         selectedRowsData: new Map(),
@@ -163,8 +165,11 @@ export default function (state = {}, action) {
         case SET_ROWS_PER_PAGE:
             return { ...state, rowsPerPage: action.payload };
 
+        case SET_ROW_SIZE_LIST:
+            return { ...state, rowSizeList: action.payload };
+
         case GET_SOURCE_LIST:
-            return { ...state, sourceListOrigin: convertToDataTable(action.payload.data, state.dataPath, state.rowsPerPage, state.columnTextLength, state.customFields)};
+            return { ...state, sourceListOrigin: convertToDataTable(action.payload.data, state.dataPath, state.rowsPerPage, state.rowSizeList, state.columnTextLength, state.customFields)};
     }
 
     return state

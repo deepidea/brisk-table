@@ -29,6 +29,7 @@ import  { showPageRows } from '../actions/showPageRows';
 import  { selectRowData } from '../actions/selectRowData';
 import  { setAllSelectedRows } from '../actions/setAllSelectedRows';
 import  { setRowsPerPage } from '../actions/setRowsPerPage';
+import  { setRowSizeList } from '../actions/setRowSizeList';
 import  { setSelectedRows } from '../actions/setSelectedRows';
 import  { setSelectedRow } from '../actions/setSelectedRow';
 import  { getSelectedRowsData } from '../actions/getSelectedRowsData';
@@ -85,6 +86,7 @@ class BriskTable extends Component {
         this.props.setDataColumnTextLength(props.dataColumnTextLength);
         this.props.setDataCustomFields(props.dataCustomFields);
         this.props.setRowsPerPage(isNaN(props.tableConfig.rowsPerPage) ? ROW_SIZE : props.tableConfig.rowsPerPage);
+        this.props.setRowSizeList(props.tableConfig.rowsSizeList.includes(NaN) ? ROW_SIZE_LIST : props.tableConfig.rowsSizeList);
         this.props.dataFetchAction(props.dataUrl, props.dataProviderFunction);
 
         this.handleSortOrderChange = this.handleSortOrderChange.bind(this);
@@ -146,6 +148,9 @@ class BriskTable extends Component {
             originalDataSource: nextProps.sourceList.sourceList.originalDataSource,
             data: nextProps.sourceList.sourceList.dataTable,
             dataLength: nextProps.sourceList.sourceList.dataLength,
+            page: nextProps.sourceList.sourceList.page || nextProps.sourceList.sourceList.pageNumber,
+            rowSize: nextProps.sourceList.sourceList.rowSize || nextProps.sourceList.sourceList.rowsPerPage,
+            rowSizeList: nextProps.sourceList.sourceList.rowSizeList,
             selectedRows: nextProps.sourceList.sourceList.selectedRows,
             filterValue: nextProps.sourceList.sourceList.filterValue,
             isAllRowsSelected: nextProps.sourceList.sourceList.isAllRowsSelected,
@@ -173,12 +178,14 @@ class BriskTable extends Component {
 
         this.props.showPageRows({
             pageNumber: nextPage,
-            rowSize: rowsPerPage
+            rowSize: rowsPerPage,
+            rowSizeList: this.state.rowSizeList
         });
 
         this.setState({
             page: nextPage,
-            rowSize: rowsPerPage
+            rowSize: rowsPerPage,
+            rowSizeList: this.state.rowSizeList
         })
     }
 
@@ -245,7 +252,8 @@ class BriskTable extends Component {
 
         this.props.showPageRows({
             pageNumber: nextPage,
-            rowSize: this.state.rowSize
+            rowSize: this.state.rowSize,
+            rowSizeList: this.state.rowSizeList
         });
 
         this.setState({page: nextPage})
@@ -257,7 +265,8 @@ class BriskTable extends Component {
 
         this.props.showPageRows({
             pageNumber: nextPage,
-            rowSize: this.state.rowSize
+            rowSize: this.state.rowSize,
+            rowSizeList: this.state.rowSizeList
         });
 
         this.setState({page: nextPage})
@@ -344,6 +353,7 @@ function mapDispatchToProps(dispatch) {
         showPageRows: showPageRows,
         selectRowData: selectRowData,
         setRowsPerPage: setRowsPerPage,
+        setRowSizeList: setRowSizeList,
         setSelectedRows: setSelectedRows,
         setSelectedRow: setSelectedRow,
         setAllSelectedRows: setAllSelectedRows,

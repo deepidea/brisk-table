@@ -420,8 +420,6 @@
 
                 briskTableFunctions.refresh('1');
 
-//                $('#buttonUpdate').hide();
-
                 $.alert('Teacher data update successfully!', {
                     type: 'success',
                     autoClose: true,
@@ -432,15 +430,6 @@
             }
 
             function addNewTeacher(){
-//                $("#form-container").html('');
-//
-//                $( "#form-template" ).find(".form-row, #buttonAdd, #buttonUpdate, #buttonDelete").each(function () {
-//                    $(this).clone().appendTo("#form-container");
-//                });
-//
-//                $(".brisk-form").find("input#id").val(Math.max.apply(Math, jsonData['teachers'].map(function(o){return o.id;})) + 1);
-
-
                 getFormTemplate();
 
                 $('#buttonAdd').show();
@@ -457,7 +446,6 @@
                     }
                 });
 
-//                $("#form-container").html('');
                 getFormTemplate();
 
                 briskTableFunctions.refresh('1');
@@ -477,12 +465,6 @@
 
 
             function hookFunction(rowData){
-//                $("#form-container").html('');
-
-//                $( "#form-template" ).find(".form-row, #buttonUpdate, #buttonDelete").each(function () {
-//                    $(this).clone().appendTo("#form-container");
-//                });
-
                 getFormTemplate();
 
                 $( "#hash" ).val(rowData.hash);
