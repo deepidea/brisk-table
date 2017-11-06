@@ -259,6 +259,20 @@
 
     <body>
         <script>
+            $( document ).ready(function() {
+                $("#form-container").html('');
+
+                $( "#form-template" ).find(".form-row, #buttonAdd, #buttonUpdate, #buttonDelete").each(function () {
+                    $(this).clone().appendTo("#form-container");
+                });
+
+                $(".brisk-form").find("input#id").val(Math.max.apply(Math, jsonData['teachers'].map(function(o){return o.id;})) + 1);
+
+                $('#buttonAdd').show();
+                $('#buttonDelete').show();
+                $('#buttonUpdate').hide();
+            });
+
             var jsonData = {
                 "teachers": [
                     {
@@ -347,6 +361,16 @@
             function dataProviderFunction() {
                 return jsonData;
             }
+            
+            function getFormTemplate() {
+                $("#form-container").html('');
+
+                $( "#form-template" ).find(".form-row, #buttonAdd, #buttonUpdate, #buttonDelete").each(function () {
+                    $(this).clone().appendTo("#form-container");
+                });
+
+                $(".brisk-form").find("input#id").val(Math.max.apply(Math, jsonData['teachers'].map(function(o){return o.id;})) + 1);
+            }
 
             function getFormData() {
                 let row = {};
@@ -373,7 +397,7 @@
                 $('#buttonDelete').remove();
                 $('#buttonUpdate').clone().appendTo("#form-container");
                 $('#buttonDelete').clone().appendTo("#form-container");
-                $('#buttonUpdate').hide();
+                $('#buttonUpdate').show();
                 $('#buttonDelete').show();
 
                 $.alert('Teacher added successfully!', {
@@ -396,7 +420,7 @@
 
                 briskTableFunctions.refresh('1');
 
-                $('#buttonUpdate').hide();
+//                $('#buttonUpdate').hide();
 
                 $.alert('Teacher data update successfully!', {
                     type: 'success',
@@ -408,16 +432,20 @@
             }
 
             function addNewTeacher(){
-                $("#form-container").html('');
+//                $("#form-container").html('');
+//
+//                $( "#form-template" ).find(".form-row, #buttonAdd, #buttonUpdate, #buttonDelete").each(function () {
+//                    $(this).clone().appendTo("#form-container");
+//                });
+//
+//                $(".brisk-form").find("input#id").val(Math.max.apply(Math, jsonData['teachers'].map(function(o){return o.id;})) + 1);
 
-                $( "#form-template" ).find(".form-row, #buttonAdd, #buttonDelete").each(function () {
-                    $(this).clone().appendTo("#form-container");
-                });
 
-                $(".brisk-form").find("input#id").val(Math.max.apply(Math, jsonData['teachers'].map(function(o){return o.id;})) + 1);
+                getFormTemplate();
 
-                $('#buttonAdd').hide();
-                $('#buttonDelete').hide();
+                $('#buttonAdd').show();
+                $('#buttonUpdate').hide();
+                $('#buttonDelete').show();
             }
 
             function onButtonDelete(){
@@ -429,12 +457,14 @@
                     }
                 });
 
-                $("#form-container").html('');
+//                $("#form-container").html('');
+                getFormTemplate();
 
                 briskTableFunctions.refresh('1');
 
+                $('#buttonAdd').show();
                 $('#buttonUpdate').hide();
-                $('#buttonDelete').hide();
+                $('#buttonDelete').show();
 
                 $.alert('Teacher data removed successfully!', {
                     type: 'success',
@@ -447,13 +477,13 @@
 
 
             function hookFunction(rowData){
-                $("#form-container").html('');
+//                $("#form-container").html('');
 
-                $( "#form-template" ).find(".form-row, #buttonUpdate, #buttonDelete").each(function () {
-                    $(this).clone().appendTo("#form-container");
-                });
+//                $( "#form-template" ).find(".form-row, #buttonUpdate, #buttonDelete").each(function () {
+//                    $(this).clone().appendTo("#form-container");
+//                });
 
-                $('#buttonUpdate').hide();
+                getFormTemplate();
 
                 $( "#hash" ).val(rowData.hash);
                 $( "#id" ).val(rowData.id);
@@ -465,6 +495,8 @@
                 $( "#notes" ).val(rowData.notes);
                 $( "#terms" ).val(rowData.terms);
 
+                $('#buttonAdd').hide();
+                $('#buttonUpdate').show();
                 $('#buttonDelete').show();
             }
         </script>
@@ -472,7 +504,7 @@
 
         <div class="brisk-table tableConfig"
              id="1"
-             data-provider-function="dataProviderFunction"
+             data-url="https://raw.githubusercontent.com/kupolua/web-presentation/master/json/db.json"
              data-json-path="$..teachers"
              data-custom-fields='[
                     {"fieldName":"id","columnName":"ID","columnWidth":5},
@@ -510,7 +542,6 @@
                             class="form-control"
                             id="firstName"
                             placeholder="First Name"
-                            oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                     >
                 </div>
                 <div class="form-group col-md-5">
@@ -520,7 +551,6 @@
                             class="form-control"
                             id="lastName"
                             placeholder="Last Name"
-                            oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                     >
                 </div>
             </div>
@@ -532,7 +562,6 @@
                             class="form-control"
                             id="age"
                             placeholder="yy"
-                            oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                     >
                 </div>
                 <div class="form-group col-md-5">
@@ -542,7 +571,6 @@
                             class="form-control"
                             id="birthday"
                             placeholder="yyyy-dd-mm"
-                            oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                     >
                 </div>
                 <div class="form-group col-md-5">
@@ -552,7 +580,6 @@
                             class="form-control"
                             id="cellPhone"
                             placeholder="+xx (xxx) xxx-xxxx"
-                            oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                     >
                 </div>
             </div>
@@ -564,7 +591,6 @@
                                 id="notes"
                                 rows="4"
                                 placeholder="Notes"
-                                oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                         ></textarea>
                 </div>
                 <div class="form-group col-md-12">
@@ -574,7 +600,6 @@
                                 id="terms"
                                 rows="4"
                                 placeholder="Terms"
-                                oninput="$('#buttonUpdate').show(); $('#buttonAdd').show(); $('#buttonDelete').show();"
                         ></textarea>
                 </div>
             </div>
