@@ -14,6 +14,7 @@ export const ROW_HEIGHT  = 26;
 export const ROW_SIZE_LIST  = [10, 20, 50];
 export const TABLE_HEIGHT = '570px'; // by default: 'auto'
 export const SHOW_PAGE_ROWS = 'SHOW_PAGE_ROWS';
+export const SET_ROW_SIZE_LIST = 'SET_ROW_SIZE_LIST';
 export const PAGE_NUMBER = 1;
 export const SELECT_ROW_DATA = 'SELECT_ROW_DATA';
 export const SET_ROWS_PER_PAGE = 'SET_ROWS_PER_PAGE';

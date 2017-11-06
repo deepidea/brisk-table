@@ -280,6 +280,7 @@ export default function (state = {}, action) {
                     dataTable: dataTable,
                     dataLength: getDataLength(state.sourceList),
                     rowsPerPage: action.payload.rowSize,
+                    rowSizeList: action.payload.rowSizeList,
                     pageNumber: action.payload.pageNumber,
                     selectedRows: fetchSelectedRowsNumbers(state, dataTable),
                     selectedRowsData: state.sourceList.selectedRowsData,
