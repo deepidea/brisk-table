@@ -2,7 +2,7 @@
 layout: post
 ---
 ```
-<div class="json-table tableConfig"
+<div class="brisk-table tableConfig"
      data-custom-fields='[
          {"fieldName":"firstName","columnName":"First Name","columnWidth":10},
          {"fieldName":"lastName","columnName":"Last Name","columnWidth":60},
@@ -16,6 +16,6 @@ layout: post
  ```
  ```
      data-hook-on-row-selected="hookFunction"
-     data-url="https://raw.githubusercontent.com/kupolua/web-presentation/master/json/db.json"
+     data-url="https://raw.githubusercontent.com/deepidea/brisk-table/master/json-server-db/db.json"
 ></div>
 ```

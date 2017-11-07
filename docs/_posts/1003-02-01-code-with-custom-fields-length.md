@@ -2,7 +2,7 @@
 layout: post
 ---
 ```
-<div class="json-table tableConfig"
+<div class="brisk-table tableConfig"
      data-json-path="$..teachers"
 ```
 ```

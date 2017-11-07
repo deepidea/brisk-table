@@ -5,7 +5,7 @@ layout: post
 <button onclick="jsonTableFunctions.refresh('1')">Click to refresh table</button>
 ```
 ```
-<div class="json-table tableConfig"
+<div class="brisk-table tableConfig"
      id="1"
      data-json-path="$..teachers"
      data-custom-fields='[

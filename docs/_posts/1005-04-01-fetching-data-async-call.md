@@ -10,7 +10,7 @@ You can use any library or any HTTP method to ferch data from remote server
     function ajaxDataProviderFunction(){
         return $.ajax({
             dataType: 'json',
-            url: 'https://raw.githubusercontent.com/kupolua/web-presentation/master/json/db.json',
+            url: 'https://raw.githubusercontent.com/deepidea/brisk-table/master/json-server-db/db.json',
             success: function(jsonData){
                 return jsonData;
             }
@@ -19,7 +19,7 @@ You can use any library or any HTTP method to ferch data from remote server
 </script>
 ```
 ```
-<div class="json-table tableConfig"
+<div class="brisk-table tableConfig"
      data-json-path="$..teachers"
      data-custom-fields='[
          {"fieldName":"firstName","columnName":"First Name","columnWidth":10},

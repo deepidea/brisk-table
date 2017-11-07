@@ -5,7 +5,7 @@ If you have too long colums, Brisk Table can concatenate it for you
 
 
 ```
-<div class="json-table tableConfig"
+<div class="brisk-table tableConfig"
      data-json-path="$..teachers"
      data-custom-fields='[
          {"fieldName":"firstName","columnName":"First Name","columnWidth":10},
