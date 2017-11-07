@@ -26,6 +26,7 @@
 <body>
     <script type="text/javascript">
         function hookFunction(rowData){
+            console.log(rowData);
             alert('\'on row selected\' hook result:' + JSON.stringify(rowData, null, 4));
         }
     </script>
@@ -96,6 +97,6 @@
          data-hook-on-row-selected="hookFunction"
     ></div>
 
-    <script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
+    <script src="https://rawgit.com/kupolua/json-to-table/presentation/html/json-table.js"></script>
 </body>
 </html>

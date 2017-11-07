@@ -5,7 +5,7 @@ To fetch selected rows use next function
 ```
 <script type="text/javascript">
     function fetchSelectedRows(id){
-        let selectedRows = jsonTableFunctions.fetchSelectedRows(id);
+        let selectedRows = briskTableFunctions.fetchSelectedRows(id);
 
         alert('\'fetch selected rows\' hook result:' + JSON.stringify(selectedRows, null, 4));
     }
