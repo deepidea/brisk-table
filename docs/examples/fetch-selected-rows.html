@@ -86,7 +86,7 @@
 
     <script type="text/javascript">
         function fetchSelectedRows(id){
-            let selectedRows = jsonTableFunctions.fetchSelectedRows(id);
+            let selectedRows = briskTableFunctions.fetchSelectedRows(id);
 
             alert('\'fetch selected rows\' hook result:' + JSON.stringify(selectedRows, null, 4));
         }
@@ -94,13 +94,13 @@
 
     <button onclick="fetchSelectedRows('1')">Click to fetch selected rows</button>
 
-    <div class="json-table tableConfig"
+    <div class="brisk-table tableConfig"
          id="1"
          data-json-path="$..teachers"
          data-show-checkboxes="true"
          data-provider-function="dataProviderFunction"
     ></div>
 
-    <script src="https://rawgit.com/kupolua/json-to-table/presentation/html/json-table.js"></script>
+    <script src="https://rawgit.com/kupolua/brisk-table/master/brisk-table.js"></script>
 </body>
 </html>

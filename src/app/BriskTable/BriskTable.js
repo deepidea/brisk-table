@@ -29,7 +29,6 @@ import  { showPageRows } from '../actions/showPageRows';
 import  { selectRowData } from '../actions/selectRowData';
 import  { setAllSelectedRows } from '../actions/setAllSelectedRows';
 import  { setRowsPerPage } from '../actions/setRowsPerPage';
-import  { setRowSizeList } from '../actions/setRowSizeList';
 import  { setSelectedRows } from '../actions/setSelectedRows';
 import  { setSelectedRow } from '../actions/setSelectedRow';
 import  { getSelectedRowsData } from '../actions/getSelectedRowsData';
@@ -86,7 +85,6 @@ class BriskTable extends Component {
         this.props.setDataColumnTextLength(props.dataColumnTextLength);
         this.props.setDataCustomFields(props.dataCustomFields);
         this.props.setRowsPerPage(isNaN(props.tableConfig.rowsPerPage) ? ROW_SIZE : props.tableConfig.rowsPerPage);
-        this.props.setRowSizeList(props.tableConfig.rowsSizeList.includes(NaN) ? ROW_SIZE_LIST : props.tableConfig.rowsSizeList);
         this.props.dataFetchAction(props.dataUrl, props.dataProviderFunction);
 
         this.handleSortOrderChange = this.handleSortOrderChange.bind(this);
@@ -100,8 +98,8 @@ class BriskTable extends Component {
             columns: [],
             data: [],
             rowSize: isNaN(props.tableConfig.rowsPerPage) ? ROW_SIZE : props.tableConfig.rowsPerPage,
-            rowHeight: isNaN(props.tableConfig.rowHeight) ? ROW_HEIGHT : props.tableConfig.rowHeight,
             rowSizeList: props.tableConfig.rowsSizeList.includes(NaN) ? ROW_SIZE_LIST : props.tableConfig.rowsSizeList,
+            rowHeight: isNaN(props.tableConfig.rowHeight) ? ROW_HEIGHT : props.tableConfig.rowHeight,
             multiSelectable: props.dataShowCheckboxes,
             showCheckboxes: props.dataShowCheckboxes,
             selectedRows: [],
@@ -150,7 +148,6 @@ class BriskTable extends Component {
             dataLength: nextProps.sourceList.sourceList.dataLength,
             page: nextProps.sourceList.sourceList.page || nextProps.sourceList.sourceList.pageNumber,
             rowSize: nextProps.sourceList.sourceList.rowSize || nextProps.sourceList.sourceList.rowsPerPage,
-            rowSizeList: nextProps.sourceList.sourceList.rowSizeList,
             selectedRows: nextProps.sourceList.sourceList.selectedRows,
             filterValue: nextProps.sourceList.sourceList.filterValue,
             isAllRowsSelected: nextProps.sourceList.sourceList.isAllRowsSelected,
@@ -275,6 +272,8 @@ class BriskTable extends Component {
     render() {
         if(!this.props.dataSource.sourceListOrigin) {return <div>Loading ...</div>};
 
+        console.log('%c render brisk table', 'color: orange; display: block;');
+
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
                 <div style={styles.container}>
@@ -353,7 +352,6 @@ function mapDispatchToProps(dispatch) {
         showPageRows: showPageRows,
         selectRowData: selectRowData,
         setRowsPerPage: setRowsPerPage,
-        setRowSizeList: setRowSizeList,
         setSelectedRows: setSelectedRows,
         setSelectedRow: setSelectedRow,
         setAllSelectedRows: setAllSelectedRows,
