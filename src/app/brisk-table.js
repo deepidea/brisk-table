@@ -9,6 +9,10 @@ import reducers from './reducers';
 
 const elementsList = document.getElementsByClassName('brisk-table');
 
+if(elementsList.length < 1) {
+    console.log('%c could not find brisk-table element', 'background: red; color: white; display: block;');
+}
+
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
@@ -35,6 +39,8 @@ Object.keys(elementsList).map(function(key) {
         rowsPerPage: Number.parseInt(window.getComputedStyle(DOM_ELEMENT).getPropertyValue('--rows-per-page').trim()),
         rowsSizeList: window.getComputedStyle(DOM_ELEMENT).getPropertyValue('--rows-size-list').trim().split(',').map(function(item) {return parseInt(item);}),
     };
+
+    console.log('%c react component render start...', 'color: blue; display: block;');
 
     ReactDOM.render(
         <Provider store={createStoreWithMiddleware(reducers)}>

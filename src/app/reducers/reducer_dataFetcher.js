@@ -7,7 +7,6 @@ import { SET_INIT_STATE } from '../constants/CONSTANTS';
 import { GET_SOURCE_LIST } from '../constants/CONSTANTS';
 import { PAGE_NUMBER } from '../constants/CONSTANTS';
 import { SET_ROWS_PER_PAGE } from '../constants/CONSTANTS';
-import { SET_ROW_SIZE_LIST } from '../constants/CONSTANTS';
 import { SET_DATA_COLUMN_TEXT_LENGTH } from '../constants/CONSTANTS';
 
 function parseToList(customFields) {
@@ -96,8 +95,23 @@ function isVisibleField(fieldsList, field) {
     return isVisibleField;
 }
 
-function convertToDataTable(data, dataPath, rowsPerPage, rowSizeList, columnTextLength, customFields) {
+function isEqualHashes(origin, children) {
+    let isEqualHashes = false;
+
+    if(origin == children) {
+        console.log('%c hashes are equal', 'color: green; display: block;');
+        isEqualHashes = true;
+    } else {
+        console.log('%c hashes are not equal', 'color: red; display: block;');
+    }
+
+    return isEqualHashes;
+}
+
+function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, customFields) {
     let dataSource = [];
+    let dataRow = {};
+    let hash;
     let tableTitle;
     let dataTable = [];
     let customFieldsList = parseToList(customFields);
@@ -107,13 +121,15 @@ function convertToDataTable(data, dataPath, rowsPerPage, rowSizeList, columnText
     tableTitle = dataPath.replace(/^\$../, '');
     headerTable = customFieldsList ? getCustomHeaderTable(dataSource[0][0], customFieldsList) : getHeaderTable(dataSource[0][0]);
 
-    dataSource[0].forEach((dataSourceRow, i, dataSource) => {
-        let dataRow = {};
-        let hash = md5(new Date() + Math.random() + i);
+    dataSource[0].forEach((dataSourceRow, i) => {
+        dataRow = {};
+        hash = md5(new Date() + Math.random() + i);
+
+        dataSourceRow = Object.assign(dataSourceRow, {hash: hash});
 
         for (var key in dataSourceRow) {
-            if(isVisibleField(headerTable, key)) {
-                if(typeof dataSourceRow[key] === 'string' && dataSourceRow[key].length > columnTextLength) {
+            if(isVisibleField(headerTable, key) || key == 'hash') {
+                if(typeof dataSourceRow[key] === 'string' && dataSourceRow[key].length > columnTextLength && key != 'hash') {
                     dataRow[key] = dataSourceRow[key].substr(0, columnTextLength) + '...';
                 } else {
                     dataRow[key] = dataSourceRow[key];
@@ -121,11 +137,10 @@ function convertToDataTable(data, dataPath, rowsPerPage, rowSizeList, columnText
             }
         }
 
-        dataRow = Object.assign(dataRow, {hash: hash});
-        dataSource[i] = Object.assign(dataSourceRow, {hash: hash});
-
-        dataTable[dataTable.length] = dataRow;
+        dataTable[dataTable.length] = dataSourceRow;
     });
+
+    isEqualHashes(dataSource[0][0].hash, dataTable[0].hash);
 
     return {
         originalDataSource: dataSource[0],
@@ -135,7 +150,6 @@ function convertToDataTable(data, dataPath, rowsPerPage, rowSizeList, columnText
         dataTable: showPageRows(dataTable, {pageNumber: PAGE_NUMBER, rowSize: rowsPerPage}),
         dataLength: dataSource[0].length,
         rowsPerPage: rowsPerPage,
-        rowSizeList: rowSizeList,
         pageNumber: PAGE_NUMBER,
         selectedRows: new Array(),
         selectedRowsData: new Map(),
@@ -164,9 +178,6 @@ export default function (state = {}, action) {
 
         case SET_ROWS_PER_PAGE:
             return { ...state, rowsPerPage: action.payload };
-
-        case SET_ROW_SIZE_LIST:
-            return { ...state, rowSizeList: action.payload };
 
         case GET_SOURCE_LIST:
             return { ...state, sourceListOrigin: convertToDataTable(action.payload.data, state.dataPath, state.rowsPerPage, state.rowSizeList, state.columnTextLength, state.customFields)};
