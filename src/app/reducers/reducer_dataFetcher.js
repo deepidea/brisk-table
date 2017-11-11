@@ -109,7 +109,6 @@ function isEqualHashes(origin, children) {
 }
 
 function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, customFields) {
-    console.log('customFields', customFields);
     let dataSource = [];
     let dataRow = {};
     let hash;

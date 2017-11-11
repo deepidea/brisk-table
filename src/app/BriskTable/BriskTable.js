@@ -273,7 +273,6 @@ class BriskTable extends Component {
         if(!this.props.dataSource.sourceListOrigin) {return <div>Loading ...</div>};
 
         console.log('%c render brisk table', 'color: orange; display: block;');
-        console.log('this.state', this.state);
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>
