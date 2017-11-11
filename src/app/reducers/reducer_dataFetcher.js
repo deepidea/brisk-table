@@ -122,15 +122,20 @@ function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, custo
     headerTable = customFieldsList ? getCustomHeaderTable(dataSource[0][0], customFieldsList) : getHeaderTable(dataSource[0][0]);
 
     dataSource[0].forEach((dataSourceRow, i) => {
-        dataRow = {};
+        dataRow = Object.constructor();
         hash = md5(new Date() + Math.random() + i);
 
         dataSourceRow = Object.assign(dataSourceRow, {hash: hash});
+    });
+
+    dataSource[0].forEach((dataSourceRow, i) => {
+        dataRow ={};
 
         for (var key in dataSourceRow) {
             if(isVisibleField(headerTable, key) || key == 'hash') {
                 if(typeof dataSourceRow[key] === 'string' && dataSourceRow[key].length > columnTextLength && key != 'hash') {
                     dataRow[key] = dataSourceRow[key].substr(0, columnTextLength) + '...';
+
                 } else {
                     dataRow[key] = dataSourceRow[key];
                 }
