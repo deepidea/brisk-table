@@ -98,6 +98,7 @@ class BriskTable extends Component {
             columns: [],
             data: [],
             rowSize: isNaN(props.tableConfig.rowsPerPage) ? ROW_SIZE : props.tableConfig.rowsPerPage,
+            rowSizeList: props.tableConfig.rowsSizeList.includes(NaN) ? ROW_SIZE_LIST : props.tableConfig.rowsSizeList,
             rowHeight: isNaN(props.tableConfig.rowHeight) ? ROW_HEIGHT : props.tableConfig.rowHeight,
             multiSelectable: props.dataShowCheckboxes,
             showCheckboxes: props.dataShowCheckboxes,
@@ -147,7 +148,6 @@ class BriskTable extends Component {
             dataLength: nextProps.sourceList.sourceList.dataLength,
             page: nextProps.sourceList.sourceList.page || nextProps.sourceList.sourceList.pageNumber,
             rowSize: nextProps.sourceList.sourceList.rowSize || nextProps.sourceList.sourceList.rowsPerPage,
-            rowSizeList: nextProps.sourceList.sourceList.rowSizeList,
             selectedRows: nextProps.sourceList.sourceList.selectedRows,
             filterValue: nextProps.sourceList.sourceList.filterValue,
             isAllRowsSelected: nextProps.sourceList.sourceList.isAllRowsSelected,
@@ -273,6 +273,7 @@ class BriskTable extends Component {
         if(!this.props.dataSource.sourceListOrigin) {return <div>Loading ...</div>};
 
         console.log('%c render brisk table', 'color: orange; display: block;');
+        console.log('this.state', this.state);
 
         return (
             <MuiThemeProvider muiTheme={muiTheme}>

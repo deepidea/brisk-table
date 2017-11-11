@@ -109,6 +109,7 @@ function isEqualHashes(origin, children) {
 }
 
 function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, customFields) {
+    console.log('customFields', customFields);
     let dataSource = [];
     let dataRow = {};
     let hash;
@@ -180,7 +181,7 @@ export default function (state = {}, action) {
             return { ...state, rowsPerPage: action.payload };
 
         case GET_SOURCE_LIST:
-            return { ...state, sourceListOrigin: convertToDataTable(action.payload.data, state.dataPath, state.rowsPerPage, state.rowSizeList, state.columnTextLength, state.customFields)};
+            return { ...state, sourceListOrigin: convertToDataTable(action.payload.data, state.dataPath, state.rowsPerPage, state.columnTextLength, state.customFields)};
     }
 
     return state
