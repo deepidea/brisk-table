@@ -27,14 +27,14 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
 </body>
 </html>
 ```
-[`Demo`](https://kupolua.github.io/brisk-table/examples/get-data-from-remote-server.html)
+[`Demo`](https://deepidea.github.io/brisk-table/examples/get-data-from-remote-server.html)
 
 <br><br>
 **Example 2** create table from local JavaScript json data:
 
 https://github.com/deepidea/brisk-table/blob/master/docs/examples/local_provider-jsonpath_root-custom_fields.html
 
-[`Demo`](https://kupolua.github.io/brisk-table/examples/local_provider-jsonpath_root-custom_fields.html)
+[`Demo`](https://deepidea.github.io/brisk-table/examples/local_provider-jsonpath_root-custom_fields.html)
 
 <br><br>
 **Example 3** contains next features:
@@ -48,7 +48,7 @@ https://github.com/deepidea/brisk-table/blob/master/docs/examples/local_provider
 
 https://github.com/deepidea/brisk-table/blob/master/docs/examples/provider-custom_fields-chckboxes-fetch_selected.html
 
-[`Demo`](https://kupolua.github.io/brisk-table/examples/provider-custom_fields-chckboxes-fetch_selected.html)
+[`Demo`](https://deepidea.github.io/brisk-table/examples/provider-custom_fields-chckboxes-fetch_selected.html)
 
 <br><br>
 **Example 4** Real application with:
@@ -60,4 +60,4 @@ https://github.com/deepidea/brisk-table/blob/master/docs/examples/provider-custo
 
 https://github.com/deepidea/brisk-table/blob/master/docs/examples/real-application.html
 
-[`Demo`](https://kupolua.github.io/brisk-table/examples/real-application.html)
+[`Demo`](https://deepidea.github.io/brisk-table/examples/real-application.html)
