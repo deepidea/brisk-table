@@ -137,7 +137,7 @@ function convertToDataTable(data, dataPath, rowsPerPage, columnTextLength, custo
             }
         }
 
-        dataTable[dataTable.length] = dataSourceRow;
+        dataTable[dataTable.length] = dataRow;
     });
 
     isEqualHashes(dataSource[0][0].hash, dataTable[0].hash);
