@@ -23,7 +23,7 @@ See demo with examples here  https://deepidea.github.io/brisk-table/
          data-url="https://raw.githubusercontent.com/deepidea/brisk-table/master/json-server-db/db.json"
          data-json-path="$..simpledata"
     ></div>
-    <script src="https://rawgit.com/deepidea/brisk-table/master/brisk-table.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/deepidea/brisk-table@master/brisk-table.js"></script>
 </body>
 </html>
 ```
